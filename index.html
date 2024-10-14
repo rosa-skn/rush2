@@ -1,0 +1,233 @@
+<html>
+<head>
+    <title>shopping site</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="website.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4"></script>
+
+</head>
+<header>
+    <div class="header">
+        <div class="menu-icon">
+           <button class="menu"> <img src= "pictures/menu.png" onclick="toggleMenu()"> </button></div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="menu-header">
+                <span class="close-icon" onclick="toggleMenu()">✕</span>
+            </div>
+            <ul class="menu-items">
+                <p>Home</p>
+                <p>Shop</p>
+                <p>Magazine</p>
+            </ul>
+        </div>
+
+            <div class="home">
+                <ul class="top">
+                    <li>
+                        <a href="#">HOME</a>
+                    </li>
+                    <li>
+                        <a href="#">SHOP</a>
+                    </li>
+                    <li>
+                        <a href="#">MAGAZINE</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="user">
+                <ul class="cart-sect">
+                    <li>
+                        <div class="cart-icon" onclick="viewCart()">
+                            <img src="pictures/cart.jpg" alt="Cart" style="width: 40px; height: 40px;">
+                            <span class="cart-count" id="cartCount">0</span>
+                    </li>
+                    <li>
+                        <i class="login" aria-hidden="true"></i>
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+    
+</header>
+  
+<nav>
+    <form action ="">
+        <div class= "input-field">
+            <input id="name" type="text">
+            <img id = "glass" src= "pictures/search.png" onclick="performSearch()">
+    </form>
+    <div class="best-match-container">
+        <button class="best-match-button" onclick="toggleBestMatchOptions()">
+            Best match
+            <span>▼</span>
+        </button>
+        <div class="best-match-options" id="bestMatchOptions">
+            <div class="best-match-option" onclick="setSortOption('best')">Best match</div>
+            <div class="best-match-option" onclick="setSortOption('priceLow')">Price: Low to High</div>
+            <div class="best-match-option" onclick="setSortOption('priceHigh')">Price: High to Low</div>
+            <div class="best-match-option" onclick="setSortOption('nameAZ')">Name: A-Z</div>
+            <div class="best-match-option" onclick="setSortOption('nameZA')">Name: Z-A</div>
+        </div>
+    </div>
+    </div>
+</nav>
+
+<body>
+<div class = "container">
+    <div class="filter-container">
+        <h3>FILTER BY</h3>
+            <h4>Collection</h4>
+            <select>
+                <option>All Collections</option>
+            </select>
+            <h4>Color</h4>
+            <select>
+                <option>All Colors</option>
+            </select>
+            <h4>Category</h4>
+            <select>
+                <option>All Categories</option>
+            </select>
+            <h4>Price Range</h4>
+            <input type="range" min="0" max="10000" step="100">
+            <span>$0 - $10,000+</span>
+    </div>
+
+    <div class="product-section">
+        <div class="product" data-category="Lounge">
+        <div class="product-img-center">
+            <a href="#">
+                <img class="product-img" src="pictures/Screenshots/coombes.png">
+            </a>
+        </div>
+        <div class="product-name">
+            <p class="namefilter">Coombes</p> <span class="product-price">$2,600</span>
+        </div>
+        <category>LOUNGE</category> <img class="add-to-cart" onclick="addToCart(1)" src = pictures/add.png>
+        <p class="star">★★★★☆<p>
+      
+        </div>
+    </div>
+
+    <div class="product-section">
+        <div class="product" data-category="table & chairs">
+        <div class="product-img-center">
+            <a href="#">
+                <img class="product-img" src="pictures/Screenshots/Keeve.png">
+            </a>
+        </div>
+        <div class="product-name">
+            <p class="namefilter">Keeve Set</p> 
+            <span class="product-price">$590</span>
+        </div>
+        <category>TABLE & CHAIRS</category> <img class="add-to-cart" onclick="addToCart(1)" src = pictures/add.png>
+        <p class="star">★★★★☆<p>
+    </div>
+</div>
+
+
+    <div class="product-section">
+        <div class="product" data-category="armchair">
+        <div class="product-img-center">
+            <a href="#">
+                <img class="product-img" src="pictures/Screenshots/nillle.png">
+            </a>
+        </div>
+        <div class="product-name">
+            <p class="namefilter">Nillè</p> <span class="product-price">$950</span>
+        </div>
+        <category>ARMCHAIR</category> <img class="add-to-cart" onclick="addToCart(1)" src = pictures/add.png>
+        <p class="star">★★★★★<p>
+    </div>
+</div>
+
+
+
+    <div class="product-section">
+        <div class="product" data-category="side table">
+        <div class="product-img-center">
+            <a href="#">
+                <img class="product-img" src="pictures/Screenshots/blanko.png">
+            </a>
+        </div>
+        <div class="product-name">
+            <p class="namefilter">Blanko</p> <span class="product-price">$90</span>
+        </div>
+        <category>SIDE TABLE</category><img class="add-to-cart" onclick="addToCart(1)" src = pictures/add.png>
+        <p class="star">★★★★☆<p>
+    </div>
+</div>
+
+
+    <div class="product-section">
+        <div class="product" data-category="shelves">
+        <div class="product-img-center">
+            <a href="#">
+                <img class="product-img" src="pictures/Screenshots/momo.png">
+            </a>
+        </div>
+        <div class="product-name">
+            <p class="namefilter">Momo</p>  <span class="product-price">$890</span>
+        </div>
+        <category>SHELVES</category><img class="add-to-cart" onclick="addToCart(1)" src = pictures/add.png>
+        <p class="star">★★★★☆<p>
+    </div>
+</div>
+
+
+    <div class="product-section">
+        <div class="product" data-category="chair">
+        <div class="product-img-center">
+            <a href="#">
+                <img class="product-img" src="pictures/Screenshots/penemille.png">
+            </a>
+        </div>
+        <div class="product-name">
+            <p class="namefilter">Penemillè</p>  
+            <span class="product-price">$120</span>
+        </div>
+        <category>CHAIR</category><img class="add-to-cart" onclick="addToCart(1)" src = pictures/add.png>
+        <p class="star">★★★★☆<p>
+    </div>
+</div>
+
+
+    <div class="product-section">
+        <div class="product" data-category="shelves">
+        <div class="product-img-center">
+            <a href="#">
+                <img class="product-img" src="pictures/Screenshots/kappu.png">
+            </a>
+        </div>
+        <div class="product-name">
+            <p class="namefilter">Kappu</p> <span class="product-price">$420</span>
+        </div>
+        <category>SHELVES</category><img class="add-to-cart" onclick="addToCart(1)" src = pictures/add.png>
+        <p class="star">★★★★☆<p>
+    </div>
+ </div>
+</div>
+</body>
+<footer>
+    <div class="pagination">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>10</button>
+        <button>></button>
+    </div>
+
+</footer>
+</html>
